@@ -1,7 +1,6 @@
 ## 使用 Docker Compose 部署
 
-    git clone --depth 1 https://github.com/fewercola/v2board
-    cd v2board
+    git clone --depth 1 https://github.com/fewercola/v2board .
     docker compose pull
     docker compose run -it --rm v2board sh init.sh
     docker compose up -d
@@ -14,7 +13,6 @@ mysql/mariadb需自行安装
 
 ## 使用 Docker Compose 更新 v2board
 
-    cd v2board
     docker compose run -it --rm v2board sh update.sh
     docker compose pull
     docker compose down
