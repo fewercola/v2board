@@ -121,6 +121,7 @@ class ClashMeta
             $userKey = Helper::uuidToBase64($password, 32);
             $password = "{$serverKey}:{$userKey}";
         }
+        $password = Helper::getFixedPassword($server, $password);
         $array = [];
         $array['name'] = $server['name'];
         $array['type'] = 'ss';

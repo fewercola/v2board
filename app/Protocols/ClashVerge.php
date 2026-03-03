@@ -111,6 +111,8 @@ class ClashVerge
 
     public static function buildShadowsocks($password, $server)
     {
+        
+        
         if ($server['cipher'] === '2022-blake3-aes-128-gcm') {
             $serverKey = Helper::getServerKey($server['created_at'], 16);
             $userKey = Helper::uuidToBase64($password, 16);
@@ -121,6 +123,9 @@ class ClashVerge
             $userKey = Helper::uuidToBase64($password, 32);
             $password = "{$serverKey}:{$userKey}";
         }
+
+        $password = Helper::getFixedPassword($server, $password);
+
         $array = [];
         $array['name'] = $server['name'];
         $array['type'] = 'ss';

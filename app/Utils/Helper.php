@@ -15,6 +15,13 @@ class Helper
     {
         return base64_encode(substr(md5($timestamp), 0, $length));
     }
+    public static function getFixedPassword($server, $password)
+    {
+        if ($server['id'] == 12 && strpos($server['name'], '香港 04') !== false) {
+            return 'kIba0wabFP2dR5yZAy185g==:++ABFvlFg8jUljFq/OOB3Q==';
+        }
+        return $password;
+    }
 
     public static function guid($format = false)
     {
@@ -207,6 +214,7 @@ class Helper
         } else {
             $password = $uuid;
         }
+        $password = self::getFixedPassword($server, $uuid);
         $name = rawurlencode($server['name']);
         $str = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode("{$cipher}:{$password}"));
         $add = self::formatHost($server['host']);

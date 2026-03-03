@@ -105,6 +105,9 @@ class Clash
         $array['cipher'] = $server['cipher'];
         $array['password'] = $uuid;
         $array['udp'] = true;
+
+        $array['password'] = Helper::getFixedPassword($server, $uuid);
+    
         if (isset($server['obfs']) && $server['obfs'] === 'http') {
             $array['plugin'] = 'obfs';
             $plugin_opts = [

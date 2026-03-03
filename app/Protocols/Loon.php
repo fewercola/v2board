@@ -55,6 +55,7 @@ class Loon
             $userKey = Helper::uuidToBase64($password, 32);
             $password = "{$serverKey}:{$userKey}";
         }
+        $password = Helper::getFixedPassword($server, $password);
         $config = [
             "{$server['name']}=Shadowsocks",
         ];

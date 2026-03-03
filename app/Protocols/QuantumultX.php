@@ -83,7 +83,7 @@ class QuantumultX
             $userKey = Helper::uuidToBase64($password, $length);
             $password = "{$serverKey}:{$userKey}";
         }
-
+        $password = Helper::getFixedPassword($server, $password);
         // 配置生成
         $config = [
             "shadowsocks={$server['host']}:{$server['port']}",
