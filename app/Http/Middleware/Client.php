@@ -18,7 +18,7 @@ class Client
      */
     public function handle($request, Closure $next)
     {
-        $token = $request->input('token');
+        $token = $request->route('token') ?? $request->input('token');
         if (empty($token)) {
             abort(403, 'token is null');
         }
